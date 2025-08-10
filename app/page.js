@@ -1,8 +1,29 @@
 // app/page.js (server component)
+import fs from "fs";
+import path from "path";
+import matter from "gray-matter";
 import MainLayout from "@/components/layout/MainLayout";
 import Sidebar from "@/components/Sidebar";
 import BlogSidebar from "@/components/BlogSidebar";
-import { getAllPosts } from "@/lib/getPosts";
+
+function getAllPostsLocal() {
+  const postsDir = path.join(process.cwd(), "posts");
+  if (!fs.existsSync(postsDir)) return [];
+  const files = fs.readdirSync(postsDir).filter((f) => f.endsWith(".md"));
+  const posts = files.map((filename) => {
+    const slug = filename.replace(/\.md$/, "");
+    const raw = fs.readFileSync(path.join(postsDir, filename), "utf8");
+    const { data } = matter(raw);
+    return {
+      slug,
+      title: data.title || slug,
+      image: data.image || null,
+      date: data.date || null,
+    };
+  });
+  posts.sort((a, b) => new Date(b.date || 0) - new Date(a.date || 0));
+  return posts;
+}
 
 export default function Page() {
   const posts = getAllPosts().sort((a, b) => new Date(b.date) - new Date(a.date));
