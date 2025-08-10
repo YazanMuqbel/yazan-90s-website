@@ -3,6 +3,7 @@
 
 import React, { useState } from "react";
 import Header from "./Header";
+import { Analytics } from "@vercel/analytics/next"
 
 export default function MainLayout({ sidebar, content, blog }) {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);

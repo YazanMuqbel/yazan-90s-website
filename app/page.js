@@ -5,6 +5,7 @@ import matter from "gray-matter";
 import MainLayout from "@/components/layout/MainLayout";
 import Sidebar from "@/components/Sidebar";
 import BlogSidebar from "@/components/BlogSidebar";
+import { Analytics } from "@vercel/analytics/next"
 
 function getAllPostsLocal() {
   const postsDir = path.join(process.cwd(), "posts");
