@@ -21,12 +21,14 @@ function getAllPostsLocal() {
       date: data.date || null,
     };
   });
+  // sort newest first if dates exist
   posts.sort((a, b) => new Date(b.date || 0) - new Date(a.date || 0));
   return posts;
 }
 
 export default function Page() {
-  const posts = getAllPosts().sort((a, b) => new Date(b.date) - new Date(a.date));
+  // ✅ use the local helper (server-only)
+  const posts = getAllPostsLocal();
 
   const contentStyle = {
     background: "#ffffff",
