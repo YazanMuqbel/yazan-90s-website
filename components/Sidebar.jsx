@@ -78,7 +78,7 @@ export default function Sidebar() {
   return (
     <aside style={sidebarStyle}>
       <div style={identityStyle}>
-        <h1> Edit here</h1>
+        <h1> Ad Space</h1>
       </div>
 
       {items.map((item) => (

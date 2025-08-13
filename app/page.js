@@ -71,9 +71,7 @@ export default function Page() {
       sidebar={<Sidebar />}
       content={
         <div style={contentStyle}>
-          <img
-            src="https://media.licdn.com/dms/image/v2/D4D03AQHNa-hKCOX4tA/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1726869999342?e=2147483647&v=beta&t=4ZAUbAw47CmYJDs0Nhm_suhBv9De8NpMCErL5SFdYQc"
-            alt="Yazan's Photo"
+          <img src="/images/profile-pic.jpg" alt="Newsletter Banner"
             style={imageStyle}
           />
 
